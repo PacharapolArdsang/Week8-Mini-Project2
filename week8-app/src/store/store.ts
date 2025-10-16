@@ -8,17 +8,17 @@
 
 // Import ฟังก์ชันสำหรับสร้าง Redux store จาก Redux Toolkit
 import { configureStore } from "@reduxjs/toolkit";
-// Import reducer ที่เราสร้างไว้สำหรับจัดการ state ของ "movies"
-import moviesReducer from "./moviesSlice";
-// Import reducer ใหม่สำหรับจัดการ state ของ "favorites"
+// Import reducer ที่เราสร้างไว้สำหรับจัดการ state ของข่าว
+import newsReducer from "./newsSlice";
+// Import reducer สำหรับจัดการ state ของรายการโปรด
 import favoritesReducer from "./favoritesSlice";
 
 // สร้างและ export store หลักของแอปพลิเคชัน
 export const store = configureStore({
   // reducer คือ object ที่รวบรวม reducer ทั้งหมดของแอปพลิเคชัน
   reducer: {
-    // state ส่วนที่ชื่อ "movies" จะถูกจัดการโดย moviesReducer
-    movies: moviesReducer,
+  // state ส่วนที่ชื่อ "news" จะถูกจัดการโดย newsReducer
+  news: newsReducer,
     // state ส่วนที่ชื่อ "favorites" จะถูกจัดการโดย favoritesReducer
     favorites: favoritesReducer,
   },

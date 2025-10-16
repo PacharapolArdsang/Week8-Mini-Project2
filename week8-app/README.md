@@ -1,73 +1,48 @@
-# React + TypeScript + Vite
+# NewsNow (Vite + React + TypeScript)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+เว็บแอปพลิเคชันสำหรับติดตามข่าวสารล่าสุด ดึงข้อมูลจาก [NewsAPI.org](https://newsapi.org/) และรองรับการบันทึกข่าวที่สนใจไว้ในเครื่องของคุณ
 
-Currently, two official plugins are available:
+## ฟีเจอร์หลัก
+- แสดงหัวข้อข่าวล่าสุด (Top Headlines) ตามประเทศ และค้นหาเนื้อหาภายในข่าว
+- เปิดอ่านรายละเอียดข่าว พร้อมลิงก์สู่แหล่งข่าวต้นฉบับ
+- กด “Favorite” เพื่อเก็บข่าวไว้ดูภายหลัง (เก็บบน `localStorage` ฝั่งผู้ใช้)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## เตรียมใช้งาน
+1. ติดตั้ง dependencies
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```powershell
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. ขอ API Key จาก [NewsAPI.org](https://newsapi.org/)
+3. สร้างไฟล์ `.env.local` (หรือปรับไฟล์ `.env`) ในโฟลเดอร์ `week8-app` แล้วใส่ค่า:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+VITE_NEWS_API_KEY=your_api_key_here
 ```
+
+## คำสั่งที่สำคัญ
+
+```powershell
+# รัน dev server
+npm run dev
+
+# สร้างไฟล์สำหรับ production
+npm run build
+
+# ตรวจสอบ lint
+npm run lint
+```
+
+เปิดเบราว์เซอร์ไปที่ `http://localhost:5173` เพื่อดูผลลัพธ์
+
+## โครงสร้างหลักของโค้ด
+- `src/store/newsSlice.ts` – จัดการสถานะข่าวและเรียก API
+- `src/store/favoritesSlice.ts` – จัดการข่าวที่บันทึกไว้ใน localStorage
+- `src/routes/Home.tsx` – หน้าแสดงข่าวทั้งหมดและค้นหา
+- `src/routes/ArticleDetail.tsx` – หน้าอ่านรายละเอียดข่าว
+- `src/routes/Favorites.tsx` – หน้าข่าวที่บันทึกไว้
+
+## หมายเหตุ
+- โปรเจกต์ใช้ TailwindCSS + daisyUI สำหรับ UI component
+- หากไม่มีการตั้งค่า `VITE_NEWS_API_KEY` แอปจะไม่สามารถดึงข้อมูลข่าวได้

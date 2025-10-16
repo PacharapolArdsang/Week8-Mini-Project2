@@ -11,7 +11,7 @@ export default function Navbar() {
       {/* ส่วนด้านซ้ายของ Navbar (flex-1 จะดันส่วนที่เหลือไปทางขวา) */}
       <div className="flex-1">
         {/* Link ไปยังหน้าแรก แสดงเป็นชื่อเว็บ */}
-        <Link to="/" className="btn btn-ghost text-xl">🎬 MovieNow</Link>
+  <Link to="/" className="btn btn-ghost text-xl">📰 NewsNow</Link>
       </div>
       {/* ส่วนด้านขวาของ Navbar */}
       <div className="flex-none gap-2">

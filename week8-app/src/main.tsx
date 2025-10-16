@@ -14,9 +14,9 @@ import { Provider } from "react-redux";
 
 // Import Component หลักและหน้าต่างๆ ของแอปพลิเคชัน
 import App from "./App"; // Component โครงหลักของแอป (มี Navbar, Footer)
-import Home from "./routes/Home"; // หน้าแรก
-import MovieDetail from "./routes/MovieDetail"; // หน้ารายละเอียดหนัง
-import Favorites from "./routes/Favorites"; // หน้าที่เก็บหนังเรื่องโปรด
+import Home from "./routes/Home"; // หน้าแรก (ข่าวล่าสุด)
+import ArticleDetail from "./routes/ArticleDetail"; // หน้ารายละเอียดข่าว
+import Favorites from "./routes/Favorites"; // หน้าข่าวที่บันทึกไว้
 import About from "./routes/About"; // หน้าเกี่ยวกับ
 
 // สร้าง Router เพื่อกำหนดเส้นทาง (URL) และ Component ที่จะแสดงผลในแต่ละเส้นทาง
@@ -27,8 +27,8 @@ const router = createBrowserRouter([
     children: [
       // path ย่อยๆ ที่จะแสดงผลอยู่ภายใน App Component
       { index: true, element: <Home /> }, // ถ้าเป็น path หลัก (/) ให้แสดงหน้า Home
-      { path: "movie/:id", element: <MovieDetail /> }, // เส้นทางสำหรับหน้ารายละเอียดหนังแต่ละเรื่อง :id คือ parameter ที่จะเปลี่ยนไปตาม ID ของหนัง
-      { path: "favorites", element: <Favorites /> }, // เส้นทางสำหรับหน้าหนังโปรด
+  { path: "article/:id", element: <ArticleDetail /> }, // เส้นทางสำหรับหน้ารายละเอียดข่าว แต่ละข่าวระบุด้วย URL ที่ถูก encode
+  { path: "favorites", element: <Favorites /> }, // เส้นทางสำหรับหน้าข่าวที่บันทึกไว้
       { path: "about", element: <About /> }, // เส้นทางสำหรับหน้าเกี่ยวกับ
     ],
   },

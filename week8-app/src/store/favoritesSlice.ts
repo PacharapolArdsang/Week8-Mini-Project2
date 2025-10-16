@@ -1,50 +1,56 @@
 // src/store/favoritesSlice.ts
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-const FAV_KEY = "fav_movie_ids";
+import type { NewsArticle } from "../types/news";
 
-// ฟังก์ชันสำหรับโหลด ID จาก localStorage
-const loadFavoritesFromStorage = (): string[] => {
+const FAV_KEY = "fav_news_articles";
+
+const loadFavoritesFromStorage = (): NewsArticle[] => {
+  if (typeof window === "undefined") {
+    return [];
+  }
   try {
     const raw = localStorage.getItem(FAV_KEY);
-    return raw ? JSON.parse(raw) : [];
+    return raw ? (JSON.parse(raw) as NewsArticle[]) : [];
   } catch {
     return [];
   }
 };
 
-// ฟังก์ชันสำหรับบันทึก ID ลง localStorage
-const saveFavoritesToStorage = (ids: string[]) => {
-  localStorage.setItem(FAV_KEY, JSON.stringify(ids));
+const saveFavoritesToStorage = (items: NewsArticle[]) => {
+  if (typeof window === "undefined") {
+    return;
+  }
+  localStorage.setItem(FAV_KEY, JSON.stringify(items));
 };
 
 interface FavoritesState {
-  ids: string[];
+  items: NewsArticle[];
 }
 
-// โหลด state เริ่มต้นจาก localStorage
 const initialState: FavoritesState = {
-  ids: loadFavoritesFromStorage(),
+  items: loadFavoritesFromStorage(),
 };
 
 const favoritesSlice = createSlice({
   name: "favorites",
   initialState,
   reducers: {
-    // Reducer สำหรับการเพิ่ม/ลบ หนังโปรด
-    toggleFavorite: (state, action: PayloadAction<string | number>) => {
-      const id = String(action.payload);
-      if (state.ids.includes(id)) {
-        state.ids = state.ids.filter((favId) => favId !== id);
+    toggleFavorite: (state, action: PayloadAction<NewsArticle>) => {
+      const exists = state.items.some((item) => item.url === action.payload.url);
+      if (exists) {
+        state.items = state.items.filter((item) => item.url !== action.payload.url);
       } else {
-        state.ids.push(id);
+        state.items.push(action.payload);
       }
-      // บันทึก state ล่าสุดลง localStorage ทุกครั้งที่มีการเปลี่ยนแปลง
-      saveFavoritesToStorage(state.ids);
+      saveFavoritesToStorage(state.items);
+    },
+    clearFavorites: (state) => {
+      state.items = [];
+      saveFavoritesToStorage(state.items);
     },
   },
 });
 
-// Export action และ reducer
-export const { toggleFavorite } = favoritesSlice.actions;
+export const { toggleFavorite, clearFavorites } = favoritesSlice.actions;
 export default favoritesSlice.reducer;
