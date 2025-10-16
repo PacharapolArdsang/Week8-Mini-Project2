@@ -21,4 +21,6 @@ export type NewsResponse = {
   status: "ok" | "error";
   totalResults: number;
   articles: NewsArticle[];
+  message?: string; // Error message from API
+  code?: string; // Error code from API
 };
