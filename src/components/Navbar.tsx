@@ -16,9 +16,12 @@ export default function Navbar() {
       {/* ส่วนด้านขวาของ Navbar */}
       <div className="flex-none gap-2">
         {/* NavLink จะเพิ่ม class "active" อัตโนมัติเมื่อ URL ตรงกับ to prop */}
-        <NavLink to="/" className="btn btn-ghost">Home</NavLink>
+        {/* <NavLink to="/" className="btn btn-ghost">Home</NavLink>
         <NavLink to="/favorites" className="btn btn-ghost">Favorites</NavLink>
-        <NavLink to="/about" className="btn btn-ghost">About</NavLink>
+        <NavLink to="/about" className="btn btn-ghost">About</NavLink> */}
+        <NavLink to="/" className="btn btn-ghost transition-colors duration-300">Home</NavLink>
+        <NavLink to="/favorites" className="btn btn-ghost transition-colors duration-300">Favorites</NavLink>
+        <NavLink to="/about" className="btn btn-ghost transition-colors duration-300">About</NavLink>
       </div>
     </div>
   );
