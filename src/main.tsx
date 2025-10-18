@@ -16,6 +16,7 @@ import { Provider } from "react-redux";
 import App from "./App"; // Component โครงหลักของแอป (มี Navbar, Footer)
 import Home from "./routes/Home"; // หน้าแรก (ข่าวล่าสุด)
 import ArticleDetail from "./routes/ArticleDetail"; // หน้ารายละเอียดข่าว
+import Categories from "./routes/Categories"; // หน้าหมวดหมู่ข่าว
 import Favorites from "./routes/Favorites"; // หน้าข่าวที่บันทึกไว้
 import About from "./routes/About"; // หน้าเกี่ยวกับ
 
@@ -27,8 +28,10 @@ const router = createBrowserRouter([
     children: [
       // path ย่อยๆ ที่จะแสดงผลอยู่ภายใน App Component
       { index: true, element: <Home /> }, // ถ้าเป็น path หลัก (/) ให้แสดงหน้า Home
-  { path: "article/:id", element: <ArticleDetail /> }, // เส้นทางสำหรับหน้ารายละเอียดข่าว แต่ละข่าวระบุด้วย URL ที่ถูก encode
-  { path: "favorites", element: <Favorites /> }, // เส้นทางสำหรับหน้าข่าวที่บันทึกไว้
+      { path: "article/:id", element: <ArticleDetail /> }, // เส้นทางสำหรับหน้ารายละเอียดข่าว แต่ละข่าวระบุด้วย URL ที่ถูก encode
+      { path: "categories", element: <Categories /> }, // เส้นทางสำหรับหน้าเลือกหมวดหมู่
+      { path: "categories/:categoryId", element: <Categories /> }, // เส้นทางสำหรับแสดงข่าวตามหมวด
+      { path: "favorites", element: <Favorites /> }, // เส้นทางสำหรับหน้าข่าวที่บันทึกไว้
       { path: "about", element: <About /> }, // เส้นทางสำหรับหน้าเกี่ยวกับ
     ],
   },

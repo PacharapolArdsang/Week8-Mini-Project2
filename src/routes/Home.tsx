@@ -1,12 +1,22 @@
 import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { fetchTopHeadlines, setOffset, setQuery } from "../store/newsSlice";
 import type { RootState, AppDispatch } from "../store/store";
 import ArticleGrid from "../components/ArticleGrid";
 import Pagination from "../components/Pagination";
 
+// หมวดหมู่ข่าวแนะนำ
+const QUICK_CATEGORIES = [
+  { id: "technology", name: "เทคโนโลยี", icon: "💻" },
+  { id: "business", name: "ธุรกิจ", icon: "💼" },
+  { id: "sports", name: "กีฬา", icon: "⚽" },
+  { id: "entertainment", name: "บันเทิง", icon: "🎬" },
+];
+
 export default function Home() {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
   const { items, status, error, total, limit, offset, query, country, category } = useSelector(
     (state: RootState) => state.news
   );
@@ -70,6 +80,32 @@ export default function Home() {
 
   return (
     <div className="container mx-auto p-4">
+      {/* Quick Category Links */}
+      <div className="mb-6">
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="text-lg font-semibold">หมวดหมู่ยอดนิยม</h2>
+          <button
+            onClick={() => navigate("/categories")}
+            className="btn btn-sm btn-ghost"
+          >
+            ดูทั้งหมด →
+          </button>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {QUICK_CATEGORIES.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => navigate(`/categories/${cat.id}`)}
+              className="btn btn-sm btn-outline gap-2"
+            >
+              <span>{cat.icon}</span>
+              <span>{cat.name}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Search Bar */}
       <div className="flex flex-col md:flex-row md:items-center gap-4 mb-6">
         <div className="relative flex-grow">
           <input
