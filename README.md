@@ -1,40 +1,17 @@
 # NewsNow (Vite + React + TypeScript)
 
-เว็บแอปพลิเคชันสำหรับติดตามข่าวสารล่าสุด ดึงข้อมูลจาก [NewsAPI.org](https://newsapi.org/) และรองรับการบันทึกข่าวที่สนใจไว้ในเครื่องของคุณ
+เว็บแอปพลิเคชันสำหรับติดตามข่าวสารล่าสุด ดึงข้อมูลที่ [NewsAPI.org](https://newsapi.org/) 
 
-## ฟีเจอร์หลัก
-- แสดงหัวข้อข่าวล่าสุด (Top Headlines) ตามประเทศ และค้นหาเนื้อหาภายในข่าว
-- เปิดอ่านรายละเอียดข่าว พร้อมลิงก์สู่แหล่งข่าวต้นฉบับ
-- กด “Favorite” เพื่อเก็บข่าวไว้ดูภายหลัง (เก็บบน `localStorage` ฝั่งผู้ใช้)
+# ฟีเจอร์หลัก
+- แสดงหัวข้อข่าวล่าสุดตามประเทศ และค้นหาข่าว
+- เปิดอ่านรายละเอียดข่าว
+- Favorite เพื่อเก็บข่าวไว้ดูภายหลัง เก็บบน localStorage ของผู้ใช้
 
-## เตรียมใช้งาน
-1. ติดตั้ง dependencies
+## Setup ที่ต้องทำ ถ้าไมข่าว
 
-```powershell
-npm install
-```
-
-2. ขอ API Key จาก [NewsAPI.org](https://newsapi.org/)
-3. สร้างไฟล์ `.env.local` (หรือปรับไฟล์ `.env`) ในโฟลเดอร์ `week8-app` แล้วใส่ค่า:
-
-```bash
-VITE_NEWS_API_KEY=your_api_key_here
-```
-
-## คำสั่งที่สำคัญ
-
-```powershell
-# รัน dev server
-npm run dev
-
-# สร้างไฟล์สำหรับ production
-npm run build
-
-# ตรวจสอบ lint
-npm run lint
-```
-
-เปิดเบราว์เซอร์ไปที่ `http://localhost:5173` เพื่อดูผลลัพธ์
+1. ขอ API Key จาก [NewsAPI.org](https://newsapi.org/)
+2. สร้างไฟล์ `.env.local` ไว้ใน project
+    VITE_NEWS_API_KEY=eb2be5de84624b1cb4f882e930dbd952
 
 ## โครงสร้างหลักของโค้ด
 - `src/store/newsSlice.ts` – จัดการสถานะข่าวและเรียก API
@@ -43,6 +20,3 @@ npm run lint
 - `src/routes/ArticleDetail.tsx` – หน้าอ่านรายละเอียดข่าว
 - `src/routes/Favorites.tsx` – หน้าข่าวที่บันทึกไว้
 
-## หมายเหตุ
-- โปรเจกต์ใช้ TailwindCSS + daisyUI สำหรับ UI component
-- หากไม่มีการตั้งค่า `VITE_NEWS_API_KEY` แอปจะไม่สามารถดึงข้อมูลข่าวได้
