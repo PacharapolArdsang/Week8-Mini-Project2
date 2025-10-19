@@ -1,4 +1,4 @@
-// Vercel Serverless Function เพื่อ proxy NewsAPI
+// Vercel Serverless Function เพื่อ proxy NewsAPI ถ้าไม่ทำ ที่ vercel จะไม่แสดงข่าว
 // ทำให้เรียก API ผ่าน backend แทนที่จะเรียกจาก client โดยตรง
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
