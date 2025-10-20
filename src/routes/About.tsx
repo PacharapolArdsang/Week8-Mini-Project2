@@ -30,6 +30,13 @@ export default function About() {
         <li>
           <b>Data Fetching:</b> Axios (สำหรับเรียกใช้ NewsAPI.org)
         </li>
+        <br/>
+        <li>
+          <b>Members</b><br/> 
+          1. Pacharapol ardsang 1650700436 Categories Function, API LINK ,Vercel<br/> 
+          2. Chittaworn Pisidpitayakul 1650707019 ,Categories UI ,CI<br/> 
+          3. wasaphol suphannarat 1657070845 , UI Home/Card and News details<br/> 
+        </li>
       </ul>
     </div>
   );

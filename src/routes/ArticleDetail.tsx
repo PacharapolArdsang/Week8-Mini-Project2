@@ -33,7 +33,7 @@ export default function ArticleDetail() {
 
   if (!decodedUrl) {
     return (
-      <div className="container mx-auto p-4 text-center">
+      <div className="card bg-base-100 shadow p-4 space-y-3">
         <div className="alert alert-error mb-4">ไม่พบลิงก์ของบทความ</div>
         <Link to="/" className="btn btn-neutral">
           กลับไปหน้าแรก
@@ -44,7 +44,7 @@ export default function ArticleDetail() {
 
   if (!article) {
     return (
-      <div className="container mx-auto p-4 text-center">
+      <div className="card bg-base-100 shadow p-4 space-y-3">
         <div className="alert alert-warning mb-4">
           ไม่พบข้อมูลข่าว — ลองกลับไปเลือกข่าวอีกครั้งจากหน้า Home
         </div>
@@ -60,7 +60,7 @@ export default function ArticleDetail() {
   const formattedDate = isNaN(published.getTime()) ? null : published.toLocaleString();
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="card bg-base-100 shadow p-4 space-y-3">
       <div className="grid gap-6 lg:grid-cols-[2fr,1fr]">
         <div>
           <img
@@ -81,7 +81,7 @@ export default function ArticleDetail() {
                 เปิดข่าวต้นฉบับ
               </a>
               <button
-                className={`btn ${isFavorited ? "btn-secondary" : "btn-outline"}`}
+                className={`btn ${isFavorited ? "btn-warning" : "btn-outline"}`}
                 onClick={() => dispatch(toggleFavorite(article))}
               >
                 {isFavorited ? "★ อยู่ในรายการโปรดแล้ว" : "☆ เพิ่มในรายการโปรด"}
