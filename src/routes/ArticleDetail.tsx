@@ -35,7 +35,7 @@ export default function ArticleDetail() {
     return (
       <div className="container mx-auto p-4 text-center">
         <div className="alert alert-error mb-4">ไม่พบลิงก์ของบทความ</div>
-        <Link to="/" className="btn btn-primary">
+        <Link to="/" className="btn btn-neutral">
           กลับไปหน้าแรก
         </Link>
       </div>
@@ -48,7 +48,7 @@ export default function ArticleDetail() {
         <div className="alert alert-warning mb-4">
           ไม่พบข้อมูลข่าว — ลองกลับไปเลือกข่าวอีกครั้งจากหน้า Home
         </div>
-        <a href={decodedUrl} target="_blank" rel="noreferrer" className="btn btn-primary">
+        <a href={decodedUrl} target="_blank" rel="noreferrer" className="btn btn-neutral">
           เปิดข่าวต้นฉบับ
         </a>
       </div>
@@ -77,7 +77,7 @@ export default function ArticleDetail() {
               <p className="leading-relaxed whitespace-pre-line">{article.description}</p>
             )}
             <div className="flex flex-wrap gap-2">
-              <a href={article.url} target="_blank" rel="noreferrer" className="btn btn-primary">
+              <a href={article.url} target="_blank" rel="noreferrer" className="btn btn-neutral">
                 เปิดข่าวต้นฉบับ
               </a>
               <button

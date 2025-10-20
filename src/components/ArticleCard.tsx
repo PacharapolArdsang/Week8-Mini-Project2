@@ -68,14 +68,14 @@ export default function ArticleCard({ article }: Props) {
         <div className="card-actions justify-between items-center mt-4">
           <Link
             to={`/article/${encodeURIComponent(article.url)}`}
-            className="btn btn-primary btn-sm"
+            className="btn btn-neutral btn-sm"
             state={{ article }}
           >
-            Read more
+            Read more 
           </Link>
           <div className="tooltip" data-tip={isFavorited ? "Remove from favorites" : "Add to favorites"}>
             <button
-              className={`btn btn-ghost btn-sm btn-circle ${isFavorited ? "text-yellow-400" : "text-gray-400"}`}
+              className={`btn btn-ghost btn-sm btn-circle ${isFavorited ? "text-yellow-400" : "text-gray-400"} shadow-sm`}
               onClick={() => dispatch(toggleFavorite(article))}
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
