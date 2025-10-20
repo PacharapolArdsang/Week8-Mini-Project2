@@ -89,17 +89,17 @@ export default function ArticleDetail() {
             </div>
           </div>
         </div>
-        <aside className="card bg-base-100 shadow p-4 space-y-3">
+        <aside className="card bg-base-100 shadow-lg p-4 space-y-4">
           <h2 className="card-title">ข้อมูลเพิ่มเติม</h2>
           {article.source?.name && <p>แหล่งข่าว: {article.source.name}</p>}
           <p>
-            แชร์:
+            แหล่งที่มา:
             <br />
             <a href={article.url} className="link" target="_blank" rel="noreferrer">
               {article.url}
             </a>
           </p>
-          <Link to="/" className="btn btn-ghost">
+          <Link to="/" className="btn btn-neutral">
             ← กลับหน้าแรก
           </Link>
         </aside>

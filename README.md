@@ -20,3 +20,6 @@
 - `src/routes/ArticleDetail.tsx` – หน้าอ่านรายละเอียดข่าว
 - `src/routes/Favorites.tsx` – หน้าข่าวที่บันทึกไว้
 
+## Vercel & GitHUB LINK!
+    https://week8-mini-project2.vercel.app/
+    https://github.com/PacharapolArdsang/Week8-Mini-Project2
